@@ -118,7 +118,18 @@
                 {
                     "name": "",
                     "id": "e975bc9f-8d70-4ada-b23f-9bf390146591",
-                    "path": "",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Plant",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "955a9567-eddf-4bde-8500-f3722f969115",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -129,7 +140,18 @@
                 {
                     "name": "",
                     "id": "7fcf9ad7-31f1-4a5f-9f85-5fb40cec2b8a",
-                    "path": "",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Water",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31e82a9e-df1a-42d6-90ed-4b01d97a8859",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
