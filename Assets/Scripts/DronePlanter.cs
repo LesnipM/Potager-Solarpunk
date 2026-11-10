@@ -13,6 +13,9 @@ public class DronePlanter : MonoBehaviour
     [SerializeField] private Transform SeedSpawnPoint;
     [SerializeField] private float plantCooldown = 0.3f;
 
+    [Header("Score")]
+    [SerializeField] private ScoreManager scoreManager;
+
     private float nextPlantTime;
 
     private void OnEnable()
@@ -34,7 +37,15 @@ public class DronePlanter : MonoBehaviour
         if (Time.time < nextPlantTime) return;
         if (seedPrefab == null || SeedSpawnPoint == null) return;
 
-        Instantiate(seedPrefab, SeedSpawnPoint.position, Quaternion.identity);
+        GameObject newPlant = Instantiate(seedPrefab, SeedSpawnPoint.position, Quaternion.identity);
+
+        // On transmet le ScoreManager à la plantation, qui ne peut pas le connaître à l'avance.
+        PlantHarvest harvest = newPlant.GetComponent<PlantHarvest>();
+        if (harvest != null)
+        {
+            harvest.Initialize(scoreManager);
+        }
+
         nextPlantTime = Time.time + plantCooldown;
     }
 }
