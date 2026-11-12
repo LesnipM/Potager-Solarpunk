@@ -16,6 +16,10 @@ public class DronePlanter : MonoBehaviour
     [Header("Score")]
     [SerializeField] private ScoreManager scoreManager;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip plantClip;
+
     private float nextPlantTime;
 
     private void OnEnable()
@@ -34,6 +38,7 @@ public class DronePlanter : MonoBehaviour
 
     private void OnPlantPerformed(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0f) return; // jeu en pause : on ne plante pas
         if (Time.time < nextPlantTime) return;
         if (seedPrefab == null || SeedSpawnPoint == null) return;
 
@@ -44,6 +49,11 @@ public class DronePlanter : MonoBehaviour
         if (harvest != null)
         {
             harvest.Initialize(scoreManager);
+        }
+
+        if (sfxSource != null && plantClip != null)
+        {
+            sfxSource.PlayOneShot(plantClip);
         }
 
         nextPlantTime = Time.time + plantCooldown;

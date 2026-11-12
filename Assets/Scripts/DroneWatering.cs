@@ -11,6 +11,8 @@ public class DroneWatering : MonoBehaviour
     [Header("Effet")]
     [SerializeField] private ParticleSystem waterJet;
 
+    [SerializeField] private AudioSource waterSound;
+
     private readonly List<PlantGrowth> plantsInZone = new List<PlantGrowth>();
 
     private void OnEnable()
@@ -22,6 +24,7 @@ public class DroneWatering : MonoBehaviour
     {
         if (waterAction != null) waterAction.action.Disable();
         if (waterJet != null) waterJet.Stop();
+        if (waterSound != null) waterSound.Stop();
     }
 
     private void Update()
@@ -44,10 +47,19 @@ public class DroneWatering : MonoBehaviour
 
     private void UpdateJet(bool isWatering)
     {
+        UpdateWaterSound(isWatering);
         if (waterJet == null) return;
 
         if (isWatering && !waterJet.isPlaying) waterJet.Play();
         else if (!isWatering && waterJet.isPlaying) waterJet.Stop();
+    }
+
+    private void UpdateWaterSound(bool isWatering)
+    {
+        if (waterSound == null) return;
+
+        if (isWatering && !waterSound.isPlaying) waterSound.Play();
+        else if (!isWatering && waterSound.isPlaying) waterSound.Stop();
     }
 
     private void OnTriggerEnter(Collider other)

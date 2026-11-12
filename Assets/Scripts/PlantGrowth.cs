@@ -1,4 +1,5 @@
 using NUnit.Framework.Internal.Commands;
+using System;
 using UnityEngine;
 
 public enum PlantStage
@@ -24,6 +25,9 @@ public class PlantGrowth : MonoBehaviour
     [SerializeField] private GameObject seedVisual;
     [SerializeField] private GameObject matureVisual;
     [SerializeField] private GameObject overripeVisual;
+
+    [Header("Effets")]
+    [SerializeField] private GameObject burstEffectPrefab;
 
     public PlantStage CurrentStage { get; private set; } = PlantStage.Seed;
     public bool IsMature => CurrentStage == PlantStage.Mature;
@@ -92,6 +96,11 @@ public class PlantGrowth : MonoBehaviour
 
     private void burst()
     {
+        if (burstEffectPrefab != null)
+        {
+            Instantiate(burstEffectPrefab, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 }

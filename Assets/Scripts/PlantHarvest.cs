@@ -8,6 +8,9 @@ public class PlantHarvest : MonoBehaviour
     [Header("Entrée")]
     [SerializeField] private InputActionReference harvestAction;
 
+    [Header("Effets")]
+    [SerializeField] private GameObject harvestEffectPrefab;
+
     private PlantGrowth growth;
     private ScoreManager scoreManager;
 
@@ -43,6 +46,7 @@ public class PlantHarvest : MonoBehaviour
 
     private void OnHarvestPerformed(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0f) return; // jeu en pause : on ne récolte pas
         if (isHarvested || !IsDroneAbove) return;
 
         // Seul un légume mûr est récolté.
@@ -74,6 +78,11 @@ public class PlantHarvest : MonoBehaviour
         if (scoreManager != null)
         {
             scoreManager.AddHarvest();
+        }
+
+        if (harvestEffectPrefab != null)
+        {
+            Instantiate(harvestEffectPrefab, transform.position, Quaternion.identity);
         }
 
         Destroy(gameObject);
