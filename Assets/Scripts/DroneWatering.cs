@@ -47,6 +47,7 @@ public class DroneWatering : MonoBehaviour
 
     private void UpdateJet(bool isWatering)
     {
+        // Le son suit le même état que le jet dde particule
         UpdateWaterSound(isWatering);
         if (waterJet == null) return;
 

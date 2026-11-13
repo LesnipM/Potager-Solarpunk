@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <sumary>
-/// Dépalce le drone dans plan horizontal (vue de dessus),
+/// Déplace le drone dans plan horizontal (vue de dessus),
 /// à hauteur  constante, au clavier comme à la manette.
 /// </sumary>
 
