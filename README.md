@@ -20,7 +20,7 @@ Jouer en ligne : [lien de la page itch.io]
 | Action | Clavier | Manette |
 | --- | --- | --- |
 | Déplacement | ZQSD / WASD / flèches | Stick gauche |
-| Planter | Espace | Bouton West |
+| Planter | Espace | Bouton South |
 | Arroser (maintenir) | E | Bouton West |
 | Récolter / Ramasser | A | Bouton East |
 | Pause | Échap | Start |
